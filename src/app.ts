@@ -2,6 +2,8 @@ import express from 'express';
 import { json } from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import cookieParser from 'cookie-parser';
+import { companyRoutes } from './routes/companyRoute';
+import { userRoutes } from './routes/userRoute';
 
 const app = express();
 app.set('trust proxy', true);
@@ -23,6 +25,14 @@ const corsOptions: CorsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// readdirSync('./src/routes/').map((route: string) => {
+//   console.log('imported: ', route);
+//   app.use('/api/v1', require('./routes/' + route));
+// });
+
+app.use('/api/v1', companyRoutes, userRoutes);
+
 app.all('*', async (req, res) => {
   res.send('all');
 });

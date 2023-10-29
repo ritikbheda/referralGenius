@@ -5,7 +5,7 @@ import { app } from './app';
 
 async function start() {
   try {
-    const requiredVariables = ['MONGODB_URL'];
+    const requiredVariables = ['MONGODB_PASSWORD'];
     const missingVariables = [];
     for (const variable of requiredVariables) {
       if (!process.env[variable]) {

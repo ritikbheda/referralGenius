@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 interface CompanyAttrs {
   company_name: string;
+  company_email: string;
   campaigns: Array<string>;
   users: Array<string>;
 }
@@ -12,6 +13,7 @@ interface CompanyModel extends mongoose.Model<CompanyDoc> {
 
 interface CompanyDoc extends mongoose.Document {
   company_name: string;
+  company_email: string;
   campaigns: Array<string>;
   users: Array<string>;
 }
@@ -19,6 +21,7 @@ interface CompanyDoc extends mongoose.Document {
 const companySchema = new mongoose.Schema(
   {
     company_name: { type: String, required: true },
+    company_email: { type: String, required: true },
     campaigns: { type: Array<string> },
     users: { type: Array<string> },
   },
